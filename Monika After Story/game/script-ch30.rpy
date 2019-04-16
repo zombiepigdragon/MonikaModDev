@@ -858,6 +858,10 @@ label pick_a_game:
             if not renpy.seen_label("mas_piano_start"):
                 $ grant_xp(xp.NEW_GAME)
             call mas_piano_start from _call_play_piano
+        "Tetris." if mas_isGameUnlocked('tetris'):
+            if not renpy.seen_label("mas_tetris_start"):
+                $ grant_xp(xp.NEW_GAME)
+            call mas_tetris_start from _call_play_tetris
         # "Movie":
         #     if not renpy.seen_label("mas_monikamovie"):
         #         $ grant_xp(xp.NEW_GAME)
