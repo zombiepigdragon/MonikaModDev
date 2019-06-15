@@ -619,6 +619,31 @@ label unlock_piano:
     $persistent.game_unlocks['piano']=True
     return
 
+init 5 python:
+    addEvent(Event(persistent.event_database,eventlabel="unlock_tetris",conditional="get_level()>=30 and not seen_event('unlock_piano')",action=EV_ACT_QUEUE)) #This needs to be unlocked by the random name change event
+
+label unlock_tetris:
+    m "I've got a new game for us to play!"
+    m "This one's an old one, but it's still wildly popular today..."
+    m "It's Tetris!"
+    m "Not just that, but we can play it together."
+    m "This is a simple 1 on 1 rendition of the game, so whoever runs out of space first loses..."
+    m "Which means I'll win every time."
+    m "Ahaha!"
+    m "Actually, I'm not {i}too{/i} good at this game."
+    m "Planning ahead under high pressure isn't my strongest suit..."
+    m "But I think I stand a decent chance!"
+    $ import os
+    $ statvfs = os.statvfs(os.curdir)
+    $ free = statvfs.f_bavail
+    $ total = statvfs.f_blocks
+    if float(free) / float(total) < 0.05: #are you low on space, player? (<5% available)
+        m "After all, you don't seem to be that great at keeping space on your computer..."
+    else:
+        m "In fact, I would love if you played it right now..."
+    $persistent.game_unlocks['tetris']=True
+    return
+
 # NOTE: this has beenpartially disabled
 label random_limit_reached:
     $seen_random_limit=True

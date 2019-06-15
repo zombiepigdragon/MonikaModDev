@@ -574,9 +574,9 @@ label mas_tetris_done:
         m "I win~"
     else:
         m "You win! Congratulations!"
-    m "Play again?"
+    m "Play again?{nw}"
     menu:
-        "Play again?"
+        m "Play again?{fast}"
         "Yes.":
             jump mas_tetris_loop
         "No.":

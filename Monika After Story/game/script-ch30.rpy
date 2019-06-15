@@ -1515,6 +1515,7 @@ label ch30_reset:
             "chess": "unlock_chess",
             "hangman": "unlock_hangman",
             "piano": "unlock_piano",
+            "tetris": "unlock_tetris"
         }
 
         for game_name,game_startlabel in game_unlock_db.iteritems():
