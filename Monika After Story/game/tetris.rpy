@@ -540,12 +540,13 @@ init python in mas_tetris:
                 return 1 if self.move == Actions.HARD_DROP else len(self.next_move) + 1
 
 label mas_tetris_start:
-    m "You want to play Tetris?"
-    m "Okay!"
+    m 1esa "You want to play Tetris?"
+    m 1esb "Okay!"
 
 label mas_tetris_loop:
-    # $ disable_esc()
-    # $ mas_MUMURaiseShield()
+    show monika 1esa
+    $ disable_esc()
+    $ mas_MUMURaiseShield()
     $ HKBHideButtons()
     python:
         tetris_board_bg = Image("mod_assets/tetris/grid.png")
@@ -571,19 +572,20 @@ label mas_tetris_done:
     $ mas_MUMUDropShield()
     $ HKBShowButtons()
     if monika_won:
-        m "I win~"
+        m 1tsb "I win~"
     else:
-        m "You win! Congratulations!"
-    m "Play again?{nw}"
+        m 1eub  "You win! Congratulations!"
+    m 1esa "Play again?{nw}"
+    $ _history_list.pop()
     menu:
         m "Play again?{fast}"
         "Yes.":
             jump mas_tetris_loop
         "No.":
             if monika_won:
-                m "I'll go a little easier on you next time, [player]."
+                m 1kua "I'll go a little easier on you next time, [player]."
                 $ persistent.tetris_difficulty -= 1
             else:
-                m "I'll go a little harder on you next time, [player]."
+                m 1kua "I'll go a little harder on you next time, [player]."
                 $ persistent.tetris_difficulty += 1
     return
