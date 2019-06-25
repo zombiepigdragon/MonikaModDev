@@ -620,7 +620,7 @@ label unlock_piano:
     return
 
 init 5 python:
-    addEvent(Event(persistent.event_database,eventlabel="unlock_tetris",conditional="get_level()>=30 and not seen_event('unlock_piano')",action=EV_ACT_QUEUE)) #This needs to be unlocked by the random name change event
+    addEvent(Event(persistent.event_database,eventlabel="unlock_tetris",conditional="get_level()>=30 and not seen_event('unlock_tetris')",action=EV_ACT_QUEUE)) #This needs to be unlocked by the random name change event
 
 label unlock_tetris:
     m 1eua "I've got a new game for us to play!"
